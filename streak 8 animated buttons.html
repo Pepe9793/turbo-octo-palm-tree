@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buttons</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+            font-size: 1em;
+        }
+        .container{
+            width: 100%;
+            height: 100vh;
+            display: grid;
+            place-items: center;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #232323;
+        }
+
+        .btn1{
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 14px;
+            border: none;
+            background: #000eff;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #ffffff;
+            gap: 6px;
+        }
+        .btn1 svg{
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+        .o1{
+            opacity: .2;
+        }
+        .o2{
+            opacity: .7;
+        }
+        @keyframes spin{
+            0%{
+                rotate: 0deg;
+            }
+            100%{
+                rotate: 360deg;
+            }
+        }
+
+
+        .btn2{
+            padding: 10px 16px;
+            border: none;
+            outline: none;
+            color: #ffffff;
+            background: #111;
+            cursor: pointer;
+            position: relative;
+            z-index: 0;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        .btn2::before{
+            content: "";
+            background: linear-gradient(
+                45deg,
+                #ff0000,
+                #ff7300,
+                #fffb00,
+                #48ff00,
+                #00ffd5,
+                #002bff,
+                #7a00ff,
+                #ff00c8,
+                #ff0000
+            );
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            background-size: 400%;
+            z-index: -1;
+            filter: blur(5px);
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            animation: glow 20s linear infinite;
+            opacity: 0;
+            transition: opacity .3s ease-in-out;
+            border-radius: 10px;
+        }
+        @keyframes glow{
+            0%{
+                background-position: 0 0;
+            }
+            50%{
+                background-position: 400% 0;
+            }
+            100%{
+                background-position: 0 0;
+            }
+        }
+        .btn2:active{
+            color: #000;
+        }
+        .btn2:active:after{
+            background: transparent;
+        }
+        .btn2:hover:before{
+            opacity: 1;
+        }
+
+        .btn3{
+            border: none;
+            padding: 12px 16px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 6px;
+            color: #ffffff;
+            background: #232323;
+            background-image: linear-gradient(
+                45deg,
+                transparent 50%,
+                #000000 50%
+            );
+            background-position: 25%;
+            background-size: 400%;
+            transition: background 500ms ease-in-out,
+            color 500ms ease-in-out;
+        }
+        .btn3:hover{
+            color: #ffffff;
+            background-position: 100%;
+        }
+
+        .btn4{
+            border: 2px solid #0d12ee;
+            padding: 10px 16px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #ffffff;
+            background: #000000;
+            border-radius: 6px;
+            background-image: linear-gradient(
+                45deg,
+                transparent 60%,
+                #0d12ee 60%
+            );
+            background-position: 20% 100%;
+            background-size: 400%;
+            transition: background 500ms ease-in-out,
+            color 500ms ease-in-out;
+        }
+        .btn4:hover{
+            color: #ffffff;
+            background-position: 90% 110%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="btn1">
+<svg
+  class="spin"
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  viewBox="0 0 24 24"
+>
+  <circle
+    class="o1"
+    cx="12"
+    cy="12"
+    r="10"
+    stroke="currentColor"
+    stroke-width="4"
+  ></circle>
+  <path
+    class="o2"
+    fill="currentColor"
+    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+  ></path>
+</svg>
+          Button</button>
+        <button class="btn2">Button</button>
+        <button class="btn3">Button</button>
+        <button class="btn4">Button</button>
+    </div>
+</body>
+</html>
