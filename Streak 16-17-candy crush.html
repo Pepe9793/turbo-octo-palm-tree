@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>candy Crush</title>
+    <style>
+        .grid{
+            height: 150px;
+            width: 150px;
+            border:3px solid black;
+            display:flex;
+            flex-wrap: wrap;
+        }
+        .grid div{
+            height: 50px;
+            width: 50px;
+            font-size: 40px;
+            display:flex;
+            justify-content: center;
+            background-color: blue;
+
+        }
+    </style>
+    <script>
+        const grid = document.querySelector(".grid")
+        const point = document.querySelector(".points")
+        const squares =[]
+        function getcandy(){
+            return["😒","😍","😁","😎"][Math.floor(Math.random()*4)]
+        }
+      for (let i=0; i< 9 ;i++){
+        const square= document.createElement("div")
+        square.setAttribute("draggable",true)
+        square.setAttribute("id", i)
+        square.textContent=getcandy()
+        grid.appendChild(square)
+        squares.push(square)
+      }
+      let candyDragged ,  candyReplaced,idDragged, idReplaced
+
+      squares.forEach((square)=>{
+        square.addEventListener("dragstart",dragstart)
+        square.addEventListener("drop",dragdrop)
+        square.addEventListener("dragover",e=e.preventDefault())
+
+      })
+      function dragstart(){
+        candyDragged =this.textContent
+        idDragged=parseInt( this.id)
+        
+      }
+      function dragdrop(){
+        candyReplaced=this.textContent
+        idReplaced=pareseInt(this.id)
+        this.textContent=candyDragged
+        square[idDragged].textContent=candyreplaced
+        for(i=0;i<=2 ;i++){
+            if(squares[i].textContent== squares[i+3].textContent&&
+            squares[i].textContent==squares[i+6].textContent){
+                points.textContent=parseInt(points.textContent)+1
+                for(j=0; j<=6;j+=3){
+                    squares[i+j].textContent=getcandy()
+                }
+            }
+        }
+      }
+    </script>
+    
+</head>
+<body>
+    <div class="grid"></div>
+    <p>Points: <span class="points">0</span></p>
+    <script src="script.js"></script>
+</body>
+</html>
